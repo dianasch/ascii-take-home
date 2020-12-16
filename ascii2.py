@@ -28,6 +28,7 @@ class Canvas:
     def add_rectangle(self, rectangle):
         """Add a rectangle shape to canvas."""
 
+        # Validate input to make sure original rectangle fits on canvas
         if rectangle.start_x < 0 or\
             rectangle.end_x > self.columns - 1 or\
             rectangle.start_y < 0 or\
@@ -97,6 +98,7 @@ class Canvas:
                         # Reset values less than start_x with blank space
                         row[:rectangle.start_x] = ["X"] * rectangle.start_x
 
+            # Original rectangle is validated -- moot edge case
             # If rectangle is shifted and is wider than canvas
             # elif rectangle.start_x < 0 and rectangle.end_x > self.columns - 1:
 
@@ -177,6 +179,7 @@ class Canvas:
                         # Reset other rows to blank spaces
                         self.canvas[i] = ["X"] * self.columns
 
+            # Original rectangle is validated -- moot edge case
             # If rectangle is shifted and is taller than canvas
             # elif rectangle.start_y <= self.rows - 1 and rectangle.end_y <= 0:
 
