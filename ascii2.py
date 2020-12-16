@@ -75,10 +75,10 @@ class Canvas:
                 for i, row in enumerate(self.canvas):
 
                     # If rows are between start_y and end_y
-                    if (self.rows - rectangle.end_y - 1) <= i <= (self.rows - rectangle.start_y - 1):
+                    if rectangle.start_y <= i <= rectangle.end_y:
 
                         # Plot rectangle up to end_x with fill_char
-                        row[:rectangle.end_x + 1] = [rectangle.fill_char] * rectangle.end_x
+                        row[:rectangle.end_x + 1] = [rectangle.fill_char] * (rectangle.end_x + 1)
 
                         # Reset values greater than end_x with blank space
                         row[rectangle.end_x + 1:] = [" "] * (self.columns - rectangle.end_x - 1)
@@ -90,7 +90,7 @@ class Canvas:
                 for i, row in enumerate(self.canvas):
 
                     # If rows are between start_y and end_y
-                    if (self.rows - rectangle.end_y - 1) <= i <= (self.rows - rectangle.start_y - 1):
+                    if rectangle.start_y <= i <= rectangle.end_y:
 
                         # Plot rectangle from start_x to end of canvas with fill_char
                         row[rectangle.start_x:] = [rectangle.fill_char] * (self.columns - rectangle.start_x)
