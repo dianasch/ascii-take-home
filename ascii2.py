@@ -10,7 +10,7 @@ class Canvas:
     def __init__(self):
         self.rows = 10
         self.columns = 10
-        self.canvas = [["X" for i in range(self.columns)] for i in range(self.rows)]
+        self.canvas = [[" " for i in range(self.columns)] for i in range(self.rows)]
 
     def render_canvas(self):
         """Print canvas out row by row."""
@@ -23,7 +23,7 @@ class Canvas:
 
         for i in range(self.columns):
 
-            self.canvas[i] = ["X"] * self.rows
+            self.canvas[i] = [" "] * self.rows
 
     def add_rectangle(self, rectangle):
         """Add a rectangle shape to canvas."""
@@ -81,7 +81,7 @@ class Canvas:
                         row[:rectangle.end_x + 1] = [rectangle.fill_char] * rectangle.end_x
 
                         # Reset values greater than end_x with blank space
-                        row[rectangle.end_x + 1:] = ["X"] * (self.columns - rectangle.end_x - 1)
+                        row[rectangle.end_x + 1:] = [" "] * (self.columns - rectangle.end_x - 1)
 
             # If rectangle is shifted to the right off canvas, but left edge still on canvas
             elif rectangle.end_x > self.columns - 1 and rectangle.start_x >= 0:
@@ -96,7 +96,7 @@ class Canvas:
                         row[rectangle.start_x:] = [rectangle.fill_char] * (self.columns - rectangle.start_x)
 
                         # Reset values less than start_x with blank space
-                        row[:rectangle.start_x] = ["X"] * rectangle.start_x
+                        row[:rectangle.start_x] = [" "] * rectangle.start_x
 
             # Original rectangle is validated -- moot edge case
             # If rectangle is shifted and is wider than canvas
@@ -124,7 +124,7 @@ class Canvas:
                         if num > 0:
 
                             # Reset values smaller than start_x to a blank space
-                            row[:rectangle.start_x] = ["X"] * rectangle.start_x
+                            row[:rectangle.start_x] = [" "] * rectangle.start_x
 
                             # Plot the width of rectangle with fill_char
                             row[rectangle.start_x:(rectangle.end_x + 1)] = [rectangle.fill_char] * (rectangle.end_x - rectangle.start_x + 1)
@@ -133,7 +133,7 @@ class Canvas:
                         elif num < 0:
 
                             # Reset values greater than end_x to a blank space
-                            row[rectangle.end_x:] = ["X"] * (self.columns - rectangle.end_x)
+                            row[rectangle.end_x:] = [" "] * (self.columns - rectangle.end_x)
 
                             # Plot the width of rectangle with fill_char
                             row[rectangle.start_x:(rectangle.end_x + 1)] = [rectangle.fill_char] * (rectangle.end_x - rectangle.start_x + 1)
@@ -160,7 +160,7 @@ class Canvas:
                     else:
 
                         # Reset other rows to blank spaces
-                        self.canvas[i] = ["X"] * self.columns
+                        self.canvas[i] = [" "] * self.columns
 
             # If rectangle is shifted down off canvas, but top edge still on canvas
             elif rectangle.start_y > self.rows - 1 and rectangle.end_y <= self.rows - 1:
@@ -177,7 +177,7 @@ class Canvas:
                     else:
 
                         # Reset other rows to blank spaces
-                        self.canvas[i] = ["X"] * self.columns
+                        self.canvas[i] = [" "] * self.columns
 
             # Original rectangle is validated -- moot edge case
             # If rectangle is shifted and is taller than canvas
@@ -204,7 +204,7 @@ class Canvas:
                     else:
 
                         # Reset other rows to blank spaces
-                        self.canvas[i] = ["X"] * self.columns
+                        self.canvas[i] = [" "] * self.columns
 
 
 class Rectangle:
